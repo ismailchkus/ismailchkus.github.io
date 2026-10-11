@@ -1,36 +1,1210 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
-    <meta name="yandex-verification" content="df727bb9d8d66266" />
-  </head>
-  <body>
-    <header=class"header">
-     <div class="header_inner">
-      <a href="#" class="logo">HolyWorld</a>
-     <nav class="nav">
-     <a hred="#hw" class="nav__link">видео</a>
-     <a hred="#top" class="nav__link">фото</a>
-     <a hred="#supchik" class="nav__link">поддержка</a>
-     <a hred="#ramen" class="nav__link">информация
-     </a>
-     </nav>
-    </div>
-    </header>
-    <main>
-    <article>
-        <h2>Что такое HolyWorld и что он из себя представляет??
-        </h2>
-        <p>HolyWorld (ХолиВорлд) — это один из крупнейших и самых популярных русскоязычных серверов в Minecraft с режимом «Лайт Анархия». Он предлагает игрокам выживание без лишних ограничений: здесь можно строить базы, нападать на других игроков, заключать союзы и использовать разнообразные уникальные механики.</p>
-    <section>
-        <h3>Кто создатель??</h3>
-        <p>Создателем и владельцем популярного российского сервера по Minecraft HolyWorld является Иван Ковальчук, также известный в игровом сообществе под псевдонимом FireZet.До создания HolyWorld он также руководил такими проектами, как MineTrust, StarCube и FireGrief.Более подробную информацию о правилах и режимах проекта можно найти на Wiki-портале HolyWorld.</p>
-    </section>
-</main>
-    <footer=class"footer">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кокос — Магия уюта</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Переменные для СВЕТЛОЙ темы (лаванда) --- */
+        :root {
+            --bg: #faf7ff;
+            --bg-card: #ffffff;
+            --bg-alt: #f1ebfa;
+            --text-main: #2e1f45;
+            --text-muted: #7a6b8f;
+            --accent: #8b5cf6;
+            --accent-contrast: #ffffff;
+            --accent-soft: rgba(139, 92, 246, 0.12);
+            --accent-shadow: rgba(139, 92, 246, 0.25);
+            --accent-shadow-strong: rgba(139, 92, 246, 0.4);
+            --border: rgba(46, 31, 69, 0.08);
+            --shadow: 0 15px 35px rgba(46, 31, 69, 0.06);
+            --shadow-hover: 0 25px 50px rgba(139, 92, 246, 0.2);
+            --radius: 24px;
+            --radius-sm: 16px;
+            --font-main: 'Nunito', sans-serif;
+            --font-display: 'Playfair Display', serif;
+            --header-h: 88px;
+        }
 
-      </footer>
-    </body>
-  </html>
+        /* --- Переменные для ТЁМНОЙ темы (ночная магия) --- */
+        html:has(#theme-toggle:checked) {
+            --bg: #0f0a1a;
+            --bg-card: #1a1128;
+            --bg-alt: #241a36;
+            --text-main: #ede6ff;
+            --text-muted: #a99bc0;
+            --accent: #a78bfa;
+            --accent-contrast: #1a1128;
+            --accent-soft: rgba(167, 139, 250, 0.15);
+            --accent-shadow: rgba(167, 139, 250, 0.25);
+            --accent-shadow-strong: rgba(167, 139, 250, 0.4);
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            --shadow-hover: 0 25px 50px rgba(167, 139, 250, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section[id] {
+            scroll-margin-top: calc(var(--header-h) + 12px);
+        }
+
+        /* --- Переключатель темы --- */
+        #theme-toggle {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .theme-switch {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            font-size: 1.4rem;
+            transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.5s ease;
+            user-select: none;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-switch:hover {
+            transform: rotate(20deg) scale(1.1);
+            border-color: var(--accent);
+        }
+
+        .theme-switch:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .theme-switch .icon-sun,
+        .theme-switch .icon-moon {
+            position: absolute;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            line-height: 1;
+        }
+
+        .theme-switch .icon-sun {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .theme-switch .icon-moon {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        html:has(#theme-toggle:checked) .theme-switch .icon-sun {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        html:has(#theme-toggle:checked) .theme-switch .icon-moon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* --- Шапка --- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: var(--header-h);
+            padding: 16px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.5s ease, border-color 0.5s ease;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav a:hover,
+        .nav a:focus-visible {
+            color: var(--accent);
+        }
+
+        .nav a:hover::after,
+        .nav a:focus-visible::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            padding: 10px 24px;
+            border: 1.5px solid var(--border);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline:hover,
+        .btn-outline:focus-visible {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        /* --- Бургер --- */
+        .burger {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+            padding: 0;
+            transition: border-color 0.3s ease, background-color 0.5s ease;
+        }
+
+        .burger:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .burger span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--text-main);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.5s ease;
+        }
+
+        .burger[aria-expanded="true"] span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .burger[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger[aria-expanded="true"] span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* --- Hero --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 160px 0 80px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 4.5rem;
+            line-height: 1.1;
+            color: var(--text-main);
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .italic-accent {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            text-decoration: none;
+            background: var(--accent);
+            color: var(--accent-contrast);
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.5s ease;
+            box-shadow: 0 10px 25px var(--accent-shadow);
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px var(--accent-shadow-strong);
+        }
+
+        .btn-text {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .btn-text:hover,
+        .btn-text:focus-visible {
+            color: var(--accent);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-main {
+            position: relative;
+            z-index: 2;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            background: var(--bg-card);
+            padding: 12px;
+            transform: rotate(2deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image-main:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .hero-image-main img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: calc(var(--radius) - 8px);
+        }
+
+        /* --- Секции --- */
+        .section-tag {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            line-height: 1.15;
+            color: var(--text-main);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        /* --- About --- */
+        .about {
+            padding: 120px 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.5s ease, border-color 0.5s ease;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 100%;
+            min-height: 500px;
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .about-image-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--bg-card);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .about-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-alt);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .features-list li:hover {
+            background: var(--bg-card);
+            border-color: var(--accent-soft);
+            transform: translateX(8px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-text strong {
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .feature-text span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Food --- */
+        .food {
+            padding: 120px 0;
+            background: var(--bg);
+            transition: background-color 0.5s ease;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .food-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background-color 0.5s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .food-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .food-icon {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+
+        .food-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .food-info p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- Gallery --- */
+        .gallery {
+            padding: 120px 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.5s ease, border-color 0.5s ease;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 400px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            color: #ffffff;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .gallery-item:hover .gallery-info,
+        .gallery-item:focus-within .gallery-info {
+            transform: translateY(0);
+        }
+
+        /* На тач-устройствах подпись видна всегда */
+        @media (hover: none), (pointer: coarse) {
+            .gallery-info {
+                transform: translateY(0);
+            }
+        }
+
+        .gallery-info span {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-style: italic;
+        }
+
+        /* --- Contacts --- */
+        .contacts {
+            padding: 120px 0;
+            background: var(--bg);
+            transition: background-color 0.5s ease;
+        }
+
+        .contacts-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: background-color 0.5s ease, border-color 0.5s ease;
+        }
+
+        .contacts-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .contacts-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contacts-desc {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .owner-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .owner-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--bg-alt);
+            padding: 16px 32px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .owner-item:hover,
+        .owner-item:focus-visible {
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        .owner-icon {
+            font-size: 1.4rem;
+        }
+
+        .owner-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .owner-value {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .social-btn {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 14px 32px;
+            border-radius: 50px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover,
+        .social-btn:focus-visible {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--accent-contrast);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--accent-shadow-strong);
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background: var(--bg-alt);
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            transition: background-color 0.5s ease, border-color 0.5s ease;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Адаптивность --- */
+        @media (max-width: 1100px) {
+            .hero-title { font-size: 3.8rem; }
+            .section-title { font-size: 2.5rem; }
+        }
+
+        @media (max-width: 900px) {
+            .header { padding: 12px 24px; }
+            :root { --header-h: 72px; }
+
+            .burger { display: inline-flex; }
+
+            .nav {
+                position: fixed;
+                top: var(--header-h);
+                left: 0;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                background: var(--bg-card);
+                border-bottom: 1px solid var(--border);
+                padding: 12px 24px 24px;
+                transform: translateY(-120%);
+                transition: transform 0.35s ease, background-color 0.5s ease;
+                box-shadow: var(--shadow);
+                max-height: calc(100vh - var(--header-h));
+                overflow-y: auto;
+                z-index: 999;
+            }
+
+            .nav.is-open {
+                transform: translateY(0);
+            }
+
+            .nav a {
+                padding: 14px 4px;
+                font-size: 1.05rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav a:last-child {
+                border-bottom: none;
+            }
+
+            .nav a::after { display: none; }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-title { font-size: 3rem; }
+            .hero-subtitle { margin: 0 auto 40px; }
+            .hero-actions { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .about-image-wrapper { min-height: 400px; }
+            .food-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item { height: 350px; }
+            .contacts-card { padding: 60px 30px; }
+            .footer-content { justify-content: center; text-align: center; }
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 120px 0 60px; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-actions { flex-direction: column; gap: 16px; }
+            .hero-stats { gap: 24px; flex-wrap: wrap; }
+            .stat-num { font-size: 1.8rem; }
+            .section-title { font-size: 2rem; }
+            .about { padding: 80px 0; }
+            .food { padding: 80px 0; }
+            .food-card { padding: 24px; flex-direction: column; text-align: center; align-items: center; }
+            .gallery { padding: 80px 0; }
+            .gallery-item { height: 280px; }
+            .contacts-card { padding: 50px 20px; }
+            .contacts-desc { font-size: 1rem; }
+            .owner-contacts { flex-direction: column; gap: 12px; }
+            .owner-item { width: 100%; justify-content: center; }
+            .social-btn { width: 100%; text-align: center; }
+            .features-list li { padding: 14px 16px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Скрытый чекбокс для переключения темы -->
+    <input type="checkbox" id="theme-toggle" aria-label="Переключить тёмную тему">
+
+    <div class="page-wrapper">
+        <header class="header">
+            <a href="#home" class="logo">Кокос<span>.</span></a>
+            <nav class="nav" id="primary-nav" aria-label="Основная навигация">
+                <a href="#home">Главная</a>
+                <a href="#about">О Кокосе</a>
+                <a href="#food">Еда</a>
+                <a href="#gallery">Галерея</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <div class="header-actions">
+                <label for="theme-toggle" class="theme-switch" title="Сменить тему">
+                    <span class="icon-sun" aria-hidden="true">☀️</span>
+                    <span class="icon-moon" aria-hidden="true">🌙</span>
+                </label>
+                <a href="#contacts" class="btn-outline">Связаться</a>
+                <button type="button"
+                        class="burger"
+                        id="burger"
+                        aria-label="Открыть меню"
+                        aria-expanded="false"
+                        aria-controls="primary-nav">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section id="home" class="hero">
+                <div class="hero-bg" aria-hidden="true"></div>
+                <div class="container hero-container">
+                    <div class="hero-content">
+                        <div class="hero-tag">🐾 Добро пожаловать</div>
+                        <h1 class="hero-title">
+                            Магия в каждой <br>
+                            <span class="italic-accent">детали</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Кокос — повелитель подоконников, ценитель мягких пледов и просто философ с большими глазами. Познакомьтесь с ним — и вы уже не сможете его забыть.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#gallery" class="btn-primary">Смотреть галерею</a>
+                            <a href="#about" class="btn-text">Узнать историю →</a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <span class="stat-num">6+</span>
+                                <span class="stat-label">Фото</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num">100%</span>
+                                <span class="stat-label">Пушистость</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-num">∞</span>
+                                <span class="stat-label">Милый вид</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="hero-image-main">
+                            <img src="images/image.jpg" alt="Кококс лежит на розовом пледе">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="about" class="about">
+                <div class="container">
+                    <div class="about-grid">
+                        <div class="about-image-wrapper">
+                            <img src="images/image5.jpg" alt="Кококс сладко спит">
+                            <div class="about-badge">Уютный режим: ВКЛ</div>
+                        </div>
+                        <div class="about-content">
+                            <div class="section-tag">О характере</div>
+                            <h2 class="section-title">Настоящий <span class="italic-accent">философ</span></h2>
+                            <p class="about-desc">
+                                Кокос — это не просто кот, это состояние души. Он обожает наблюдать за снегом из окна, греться на солнце и проверять, как работают швейные машинки. Его взгляд может быть скептическим, но сердце — безгранично добрым.
+                            </p>
+                            <ul class="features-list">
+                                <li>
+                                    <div class="feature-icon">🐾</div>
+                                    <div class="feature-text">
+                                        <strong>Спать на коленях</strong>
+                                        <span>Пока хозяин работает</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="feature-icon">🐾</div>
+                                    <div class="feature-text">
+                                        <strong>Контролировать уборку</strong>
+                                        <span>Лично проверяет каждую игрушку</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="feature-icon">🐾</div>
+                                    <div class="feature-text">
+                                        <strong>Смотреть на птиц</strong>
+                                        <span>С высоты подоконника</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="feature-icon">🐾</div>
+                                    <div class="feature-text">
+                                        <strong>Позировать</strong>
+                                        <span>Для фото в любых позах</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="food" class="food">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-tag">Гастрономия</div>
+                        <h2 class="section-title">Любимая <span class="italic-accent">еда</span></h2>
+                    </div>
+                    <div class="food-grid">
+                        <div class="food-card">
+                            <div class="food-icon">🌭</div>
+                            <div class="food-info">
+                                <h3>Сосиски</h3>
+                                <p>Главный деликатес в жизни Кокоса. Ради хорошей сосиски он готов свернуть горы, разбудить хозяина в 6 утра и даже показать трюк «сидеть».</p>
+                            </div>
+                        </div>
+                        <div class="food-card">
+                            <div class="food-icon">🥫</div>
+                            <div class="food-info">
+                                <h3>Паштет Вискас</h3>
+                                <p>Второй по важности продукт в рационе. Особенно ценится за нежную текстуру и возможность вылизать миску до блеска за считанные секунды.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="gallery" class="gallery">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="section-tag">Моменты</div>
+                        <h2 class="section-title">Фото<span class="italic-accent">галерея</span></h2>
+                    </div>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="images/image1.jpg" alt="Кококс смотрит скептически">
+                            <div class="gallery-info">
+                                <span>Скептический взгляд</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/image2.jpg" alt="Кококс крупным планом">
+                            <div class="gallery-info">
+                                <span>Крупный план</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/image3.jpg" alt="Силуэт Кококса на фоне окна">
+                            <div class="gallery-info">
+                                <span>Силуэт</span>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/image4.jpg" alt="Кококс на подоконнике">
+                            <div class="gallery-info">
+                                <span>На страже</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contacts" class="contacts">
+                <div class="container">
+                    <div class="contacts-card">
+                        <div class="section-tag">Связь с владельцем</div>
+                        <h2 class="section-title">Хотите <span class="italic-accent">почесать за ушком?</span></h2>
+                        <p class="contacts-desc">
+                            Если у вас есть вкусняшки, вопросы или просто желание поболтать о котах — владелец Кокоса всегда на связи!
+                        </p>
+
+                        <div class="owner-contacts">
+                            <a href="tel:+79991234567" class="owner-item">
+                                <div class="owner-icon">📞</div>
+                                <div>
+                                    <span class="owner-label">Телефон</span>
+                                    <span class="owner-value">+7 (999) 123-45-67</span>
+                                </div>
+                            </a>
+                            <a href="/cdn-cgi/l/email-protection#660911080314260d090d090d15481413" class="owner-item">
+                                <div class="owner-icon">✉️</div>
+                                <div>
+                                    <span class="owner-label">Email</span>
+                                    <span class="owner-value"><span class="__cf_email__" data-cfemail="fb948c959e89bb909490949088d5898e">[email&#160;protected]</span></span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#" class="social-btn">Telegram</a>
+                            <a href="#" class="social-btn">VK</a>
+                            <a href="#" class="social-btn">Instagram*</a>
+                        </div>
+                        <p class="disclaimer">* Запрещена в РФ</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container footer-content">
+                <p>&copy; 2026 Кокос. Все права защищены.</p>
+                <p>Сделано с любовью к котам 🐾</p>
+            </div>
+        </footer>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // --- Мобильное меню ---
+        (function () {
+            var burger = document.getElementById('burger');
+            var nav = document.getElementById('primary-nav');
+            if (!burger || !nav) return;
+
+            function setOpen(open) {
+                nav.classList.toggle('is-open', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+                burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+            }
+
+            burger.addEventListener('click', function () {
+                setOpen(!nav.classList.contains('is-open'));
+            });
+
+            // Закрываем меню при клике по ссылке
+            nav.addEventListener('click', function (e) {
+                if (e.target.tagName === 'A') setOpen(false);
+            });
+
+            // Закрываем по Esc
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+                    setOpen(false);
+                    burger.focus();
+                }
+            });
+
+            // Закрываем при ресайзе в десктоп
+            window.addEventListener('resize', function () {
+                if (window.innerWidth > 900) setOpen(false);
+            });
+        })();
+
+        // --- Сохранение темы ---
+        (function () {
+            var toggle = document.getElementById('theme-toggle');
+            if (!toggle) return;
+
+            try {
+                var saved = localStorage.getItem('kokoks-theme');
+                if (saved === 'dark') {
+                    toggle.checked = true;
+                } else if (saved === 'light') {
+                    toggle.checked = false;
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    toggle.checked = true;
+                }
+            } catch (e) { /* localStorage может быть недоступен */ }
+
+            toggle.addEventListener('change', function () {
+                try {
+                    localStorage.setItem('kokoks-theme', toggle.checked ? 'dark' : 'light');
+                } catch (e) { /* ignore */ }
+            });
+        })();
+    </script>
+
+</body>
+</html>
